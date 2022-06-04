@@ -16,11 +16,17 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public Student getAllStudents() {
-        return (Student) studentRepository.findAll();
+        return  studentRepository.findAll();
     }
 
     @Override
     public Student getById(Long id) {
         return studentRepository.findById(id).get();
+    }
+
+    @Override
+    public String deleteById(Long id) {
+         studentRepository.deleteById(id);
+    return"deleted successifully";
     }
 }

@@ -8,4 +8,6 @@ public interface StudentService {
     Student getAllStudents();
 
     Student getById(Long id);
+
+    String deleteById(Long id);
 }

@@ -3,10 +3,9 @@ package com.example.studentManagementSystemApi.Controller;
 import com.example.studentManagementSystemApi.Entity.Student;
 import com.example.studentManagementSystemApi.Service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class StudentController {
@@ -17,12 +16,15 @@ public Student saveStudent(Student student){
     return studentService.saveStudent(student);
 }
 @GetMapping("/allStudents")
-public Student getAllStudents(Student student){
-        return studentService.getAllStudents();
+public List<Student> getAllStudents(Student student){
+        return (List<Student>) studentService.getAllStudents();
   }
   @GetMapping("/getStudentById{id}")
     public Student getStudentById(@PathVariable Long id){
         return studentService.getById(id);
   }
-
+    @DeleteMapping("/getStudentById{id}")
+    public String deleteStudentById(@PathVariable Long id){
+        return studentService.deleteById(id);
+    }
 }
